@@ -1,11 +1,47 @@
-import { PropsWithChildren, createContext, useContext, useState } from "react";
+import {
+  Dispatch,
+  PropsWithChildren,
+  SetStateAction,
+  createContext,
+  useContext,
+  useState,
+} from "react";
 
-const formDataContext = createContext<null>(null);
+type FormData = {
+  personalDetails: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+  };
+};
 
-export const useFormData = () => useContext(formDataContext);
+type FormDataContextType = {
+  formData: FormData;
+  setFormData: Dispatch<SetStateAction<FormData>>;
+};
+
+const formDataContext = createContext<null | FormDataContextType>(null);
+
+export const useFormData = () => {
+  const context = useContext(formDataContext);
+
+  if (!context) {
+    throw new Error("useFormData must be used within a FormDataProvider");
+  }
+  return context;
+};
 
 export const FormDataProvider = ({ children }: PropsWithChildren) => {
-  const [formData, setFormData] = useState({});
+  const initialFormData: FormData = {
+    personalDetails: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+    },
+  };
+  const [formData, setFormData] = useState<FormData>(initialFormData);
 
   return (
     <formDataContext.Provider value={{ formData, setFormData }}>

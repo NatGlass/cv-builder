@@ -1,10 +1,10 @@
 import { useFormData } from "@/contexts/FormContext";
 import { MainFormType, mainFormSchema } from "@/validators";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import PersonalDetailsForm from "./subforms/personal";
 import { Button } from "./ui/button";
-import { useEffect } from "react";
 
 function CustomizeForm() {
   const { setFormData } = useFormData();
@@ -19,13 +19,19 @@ function CustomizeForm() {
       },
     },
   });
-  
-  useEffect(() => { 
-    const subscription = methods.watch((value, { name, type }) => {
-      setFormData(value);
+
+  useEffect(() => {
+    const subscription = methods.watch((value) => {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        personalDetails: {
+          ...prevFormData.personalDetails,
+          ...value.personalDetails,
+        },
+      }));
     });
     return () => subscription.unsubscribe();
-  }, [methods.watch, setFormData])
+  }, [methods.watch, setFormData]);
 
   const onSubmit = (data: MainFormType) => {
     console.log(data);
@@ -35,7 +41,12 @@ function CustomizeForm() {
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <PersonalDetailsForm />
-        <Button type="submit">Save</Button>
+        <div className="space-x-4 my-8">
+          <Button type="submit">Save</Button>
+          <Button variant="destructive" onClick={() => methods.reset()}>
+            Reset
+          </Button>
+        </div>
       </form>
     </FormProvider>
   );

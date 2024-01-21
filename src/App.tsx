@@ -13,7 +13,7 @@ function App() {
     <FormDataProvider>
       <Layout>
         <ResizablePanelGroup direction="horizontal">
-          <ResizablePanel defaultSize={40} minSize={40}>
+          <ResizablePanel defaultSize={40}>
             <Customize />
           </ResizablePanel>
           <ResizableHandle withHandle />
