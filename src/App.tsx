@@ -6,20 +6,23 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "./components/ui/resizable";
+import { FormDataProvider } from "./contexts/FormContext";
 
 function App() {
   return (
-    <Layout>
-      <ResizablePanelGroup direction="horizontal">
-        <ResizablePanel defaultSize={40} minSize={40}>
-          <Customize />
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel defaultSize={60}>
-          <Preview />
-        </ResizablePanel>
-      </ResizablePanelGroup>
-    </Layout>
+    <FormDataProvider>
+      <Layout>
+        <ResizablePanelGroup direction="horizontal">
+          <ResizablePanel defaultSize={40} minSize={40}>
+            <Customize />
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel defaultSize={60}>
+            <Preview />
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </Layout>
+    </FormDataProvider>
   );
 }
 
