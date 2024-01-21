@@ -11,7 +11,7 @@ function App() {
   return (
     <Layout>
       <ResizablePanelGroup direction="horizontal">
-        <ResizablePanel defaultSize={40} minSize={25} maxSize={40}>
+        <ResizablePanel defaultSize={40} minSize={40}>
           <Customize />
         </ResizablePanel>
         <ResizableHandle withHandle />
