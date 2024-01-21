@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 
 function PersonalDetailsForm() {
   const form = useFormContext<PersonalDetailsType>();
@@ -26,7 +27,7 @@ function PersonalDetailsForm() {
           Let potential employers know a little bit about you.
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4 md:grid lg:grid-cols-2 lg:space-y-0 lg:gap-4">
+      <CardContent className="gap-y-4 gap-x-2 flex flex-col md:grid lg:grid-cols-2 lg:space-y-0 lg:gap-4">
         <FormField
           control={form.control}
           name="personalDetails.firstName"
@@ -34,7 +35,7 @@ function PersonalDetailsForm() {
             <FormItem>
               <FormLabel>First Name</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="First" />
+                <Input {...field} placeholder="Bruce" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -45,9 +46,9 @@ function PersonalDetailsForm() {
           name="personalDetails.lastName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Last Name</FormLabel>
+              <FormLabel>First Name</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="Last" />
+                <Input {...field} placeholder="Wayne" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -60,7 +61,10 @@ function PersonalDetailsForm() {
             <FormItem>
               <FormLabel>Email Address</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="Example@email.com" />
+                <Input
+                  {...field}
+                  placeholder="Brucewayne@batmail.com"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -74,6 +78,23 @@ function PersonalDetailsForm() {
               <FormLabel>Phone Number</FormLabel>
               <FormControl>
                 <Input {...field} type="tel" placeholder="01234567890" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="personalDetails.summary"
+          render={({ field }) => (
+            <FormItem className="col-span-2">
+              <FormLabel>Summary</FormLabel>
+              <FormControl>
+                <Textarea
+                  {...field}
+                  className="resize-none"
+                  placeholder="How would you describe yourself?"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

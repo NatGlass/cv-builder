@@ -16,6 +16,7 @@ function CustomizeForm() {
         lastName: "",
         email: "",
         phone: "",
+        summary: "",
       },
     },
   });

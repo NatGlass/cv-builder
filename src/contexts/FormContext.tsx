@@ -13,6 +13,7 @@ type FormData = {
     lastName: string;
     email: string;
     phone: string;
+    summary: string;
   };
 };
 
@@ -39,6 +40,7 @@ export const FormDataProvider = ({ children }: PropsWithChildren) => {
       lastName: "",
       email: "",
       phone: "",
+      summary: "",
     },
   };
   const [formData, setFormData] = useState<FormData>(initialFormData);
