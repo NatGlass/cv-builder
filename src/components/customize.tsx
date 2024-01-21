@@ -5,7 +5,7 @@ function Customize() {
     <aside className="bg-white h-screen py-6 px-4 border-l">
       <h1 className="text-3xl font-bold">Customize</h1>
 
-      <div className="my-8">
+      <div className="my-8 min-w-[300px]">
         <CustomizeForm />
       </div>
     </aside>
