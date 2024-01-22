@@ -3,6 +3,7 @@ import { Separator } from "./ui/separator";
 
 function Preview() {
   const { formData } = useFormData();
+
   return (
     <aside className="bg-slate-50 h-screen py-6 px-4 border-r ">
       <h1 className="text-3xl font-bold mb-8">Preview</h1>
@@ -34,6 +35,15 @@ function Preview() {
             </div>
           </section>
           <Separator />
+          <div id="education" className="my-8">
+            <h2 className="text-2xl">Education</h2>
+            {formData.education.map((education, index) => (
+              <div key={index} className="mb-4">
+                <h3 className="font-semibold">{education.institution}</h3>
+                <p>{education.degree}</p>
+              </div>
+            ))}
+          </div>{" "}
         </div>
       </div>
     </aside>

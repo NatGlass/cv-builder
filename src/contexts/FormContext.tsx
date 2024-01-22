@@ -15,6 +15,10 @@ type FormData = {
     phone: string;
     summary: string;
   };
+  education: {
+    institution: string;
+    degree: string;
+  }[];
 };
 
 type FormDataContextType = {
@@ -42,6 +46,12 @@ export const FormDataProvider = ({ children }: PropsWithChildren) => {
       phone: "",
       summary: "",
     },
+    education: [
+      {
+        institution: "",
+        degree: "",
+      },
+    ],
   };
   const [formData, setFormData] = useState<FormData>(initialFormData);
 

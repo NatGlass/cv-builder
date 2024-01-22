@@ -6,6 +6,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "./components/ui/resizable";
+import { ScrollArea } from "./components/ui/scroll-area";
 import { FormDataProvider } from "./contexts/FormContext";
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
       <Layout>
         <ResizablePanelGroup direction="horizontal">
           <ResizablePanel defaultSize={40}>
-            <Customize />
+            <ScrollArea className="h-screen">
+              <Customize />
+            </ScrollArea>
           </ResizablePanel>
           <ResizableHandle withHandle />
           <ResizablePanel defaultSize={60}>

@@ -11,15 +11,25 @@ const personalDetailsSchema = z.object({
     .max(240, { message: "Try to keep your summary succinct!" }),
 });
 
+const educationDetailsSchema = z.array(
+  z.object({
+    institution: z.string(),
+    degree: z.string(),
+  })
+);
+
+const mainFormSchema = z.object({
+  personalDetails: personalDetailsSchema,
+  educationDetails: educationDetailsSchema,
+});
+
 type PersonalDetailsType = {
   personalDetails: z.infer<typeof personalDetailsSchema>;
 };
 
-const mainFormSchema = z.object({
-  personalDetails: personalDetailsSchema,
-});
 
 type MainFormType = z.infer<typeof mainFormSchema>;
+
 
 export {
   mainFormSchema,
