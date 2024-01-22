@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const personalDetailsSchema = z.object({
+export const personalDetailsSchema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
   lastName: z.string().min(1, { message: "Last name is required" }),
   email: z.string().email({ message: "Invalid email address" }),
@@ -11,27 +11,26 @@ const personalDetailsSchema = z.object({
     .max(240, { message: "Try to keep your summary succinct!" }),
 });
 
-const educationDetailsSchema = z.array(
+export const educationSchema = z.array(
   z.object({
     institution: z.string(),
     degree: z.string(),
+    startDate: z.date().optional(),
+    endDate: z.date().optional(),
   })
 );
 
-const mainFormSchema = z.object({
+export const mainFormSchema = z.object({
   personalDetails: personalDetailsSchema,
-  educationDetails: educationDetailsSchema,
+  educationSchema: educationSchema,
 });
 
-type PersonalDetailsType = {
-  personalDetails: z.infer<typeof personalDetailsSchema>;
-};
+export type PersonalDetailsType = z.infer<typeof personalDetailsSchema>;
+export type EducationType = z.infer<typeof educationSchema>;
 
-type MainFormType = z.infer<typeof mainFormSchema>;
+// Needs to be an explicit object to allow for accessing props in input names
+export type MainFormType = {
+  personalDetails: PersonalDetailsType;
+  education: EducationType;
+}
 
-export {
-  mainFormSchema,
-  personalDetailsSchema,
-  type MainFormType,
-  type PersonalDetailsType,
-};

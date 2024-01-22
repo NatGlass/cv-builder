@@ -7,23 +7,11 @@ import {
   useState,
 } from "react";
 
-type FormData = {
-  personalDetails: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    summary: string;
-  };
-  education: {
-    institution: string;
-    degree: string;
-  }[];
-};
+import { MainFormType } from "@/validators";
 
 type FormDataContextType = {
-  formData: FormData;
-  setFormData: Dispatch<SetStateAction<FormData>>;
+  formData: MainFormType;
+  setFormData: Dispatch<SetStateAction<MainFormType>>;
 };
 
 const formDataContext = createContext<null | FormDataContextType>(null);
@@ -38,7 +26,7 @@ export const useFormData = () => {
 };
 
 export const FormDataProvider = ({ children }: PropsWithChildren) => {
-  const initialFormData: FormData = {
+  const initialFormData: MainFormType = {
     personalDetails: {
       firstName: "",
       lastName: "",
@@ -50,10 +38,12 @@ export const FormDataProvider = ({ children }: PropsWithChildren) => {
       {
         institution: "",
         degree: "",
+        startDate: undefined,
+        endDate: undefined,
       },
     ],
   };
-  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [formData, setFormData] = useState<MainFormType>(initialFormData);
 
   return (
     <formDataContext.Provider value={{ formData, setFormData }}>
