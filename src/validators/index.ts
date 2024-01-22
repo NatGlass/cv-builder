@@ -27,9 +27,7 @@ type PersonalDetailsType = {
   personalDetails: z.infer<typeof personalDetailsSchema>;
 };
 
-
 type MainFormType = z.infer<typeof mainFormSchema>;
-
 
 export {
   mainFormSchema,

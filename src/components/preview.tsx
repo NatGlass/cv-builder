@@ -17,8 +17,11 @@ function Preview() {
             </h2>
             <Separator />
           </div>
-          <section className="grid grid-cols-2 md:grid-cols-3 my-8 gap-x-4">
-            <div id="description" className="md:col-span-2">
+          <section
+            id="description"
+            className="grid grid-cols-2 md:grid-cols-3 my-8 gap-x-4"
+          >
+            <div className="md:col-span-2">
               <h2 className="text-2xl">Summary</h2>
               <p className="max-w-prose">{formData.personalDetails?.summary}</p>
             </div>
@@ -35,15 +38,20 @@ function Preview() {
             </div>
           </section>
           <Separator />
-          <div id="education" className="my-8">
+          <section id="education" className="my-8">
             <h2 className="text-2xl">Education</h2>
-            {formData.education.map((education, index) => (
-              <div key={index} className="mb-4">
-                <h3 className="font-semibold">{education.institution}</h3>
-                <p>{education.degree}</p>
-              </div>
-            ))}
-          </div>{" "}
+            <div className="grid grid-cols-2 gap-x-4 mt-8">
+              {formData.education.map((education, index) => (
+                <div key={index} className="mb-4">
+                  <h3 className="font-semibold text-lg">
+                    {education.institution}
+                  </h3>
+                  <p>{education.degree}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+          <Separator />
         </div>
       </div>
     </aside>
