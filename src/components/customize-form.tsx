@@ -3,6 +3,7 @@ import { MainFormType, mainFormSchema } from "@/validators";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import PrintPdf from "./print-pdf";
 import EducationForm from "./subforms/education";
 import PersonalDetailsForm from "./subforms/personal";
 import { Button } from "./ui/button";
@@ -42,7 +43,7 @@ function CustomizeForm() {
   }, [methods.watch, setFormData]);
 
   const onSubmit = (data: MainFormType) => {
-    console.log(data);
+    PrintPdf();
   };
 
   const handleReset = () => {
@@ -67,7 +68,7 @@ function CustomizeForm() {
         <PersonalDetailsForm />
         <EducationForm />
         <div className="space-x-4 my-8">
-          <Button type="submit">Save</Button>
+          <Button type="submit">Print PDF</Button>
           <Button variant="destructive" onClick={handleReset}>
             Reset
           </Button>

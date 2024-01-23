@@ -5,9 +5,12 @@ function Preview() {
   const { formData } = useFormData();
 
   return (
-    <aside className="bg-slate-50 h-screen py-6 px-4 border-r ">
+    <aside className="bg-slate-50 h-screen py-6 px-4 border-r">
       <h1 className="text-3xl font-bold mb-8">Preview</h1>
-      <div className="w-full h-full min-w-[300px] bg-white rounded-lg overflow-hidden">
+      <div
+        className="w-full h-full min-w-[300px] bg-white rounded-lg overflow-hidden"
+        id="preview"
+      >
         <div className="p-6">
           <div>
             <h2 className="text-4xl font-bold mb-4">
