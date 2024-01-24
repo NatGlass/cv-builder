@@ -6,6 +6,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import PrintPdf from "./print-pdf";
 import EducationForm from "./subforms/education";
 import PersonalDetailsForm from "./subforms/personal";
+import WorkForm from "./subforms/work";
 import { Button } from "./ui/button";
 
 function CustomizeForm() {
@@ -67,6 +68,7 @@ function CustomizeForm() {
       >
         <PersonalDetailsForm />
         <EducationForm />
+        <WorkForm />
         <div className="space-x-4 my-8">
           <Button type="submit">Print PDF</Button>
           <Button variant="destructive" onClick={handleReset}>

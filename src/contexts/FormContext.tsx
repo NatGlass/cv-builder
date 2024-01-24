@@ -19,6 +19,10 @@ type FormData = {
     institution: string;
     degree: string;
   }[];
+  work: {
+    company: string;
+    role: string;
+  }[];
 };
 
 type FormDataContextType = {
@@ -50,6 +54,12 @@ export const FormDataProvider = ({ children }: PropsWithChildren) => {
       {
         institution: "",
         degree: "",
+      },
+    ],
+    work: [
+      {
+        company: "",
+        role: "",
       },
     ],
   };
